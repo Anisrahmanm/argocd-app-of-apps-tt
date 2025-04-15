@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: app-of-apps-t
+spec:
+  destination:
+    name: in-cluster
+    namespace: argocd
+  source:
+    path: apps
+    repoURL: 'https://github.com/manisrahman/argocd-app-of-apps-t.git'
+    targetRevision: HEAD
+  project: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
