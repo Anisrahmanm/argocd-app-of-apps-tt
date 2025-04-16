@@ -3,12 +3,14 @@ kind: Application
 metadata:
   name: my-app
   namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoclear
 spec:
   project: default
   source:
     repoURL: https://github.com/Anisrahmanm/argocd-app-of-apps-tt.git
     targetRevision: HEAD
-    path: my-app
+    path: environments/staging/my-app
   destination:
     server: https://kubernetes.default.svc
   syncPolicy:
