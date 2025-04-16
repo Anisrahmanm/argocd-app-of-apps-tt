@@ -1,6 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  name: nginx
   namespace: prod
   labels:
     app: nginx
@@ -9,16 +10,13 @@ spec:
   selector:
     matchLabels:
       app: nginx
-  strategy: {}
   template:
     metadata:
       labels:
         app: nginx
     spec:
       containers:
-        - image: ccoepol/nginx:v0.1.0
-          name: nginx
+        - name: nginx
+          image: ccoepol/nginx:v0.1.0
           ports:
             - containerPort: 80
-          resources: {}
-status: {}
